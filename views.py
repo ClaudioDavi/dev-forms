@@ -1,4 +1,4 @@
-from flask import render_template, flash, request
+from flask import render_template, request, redirect
 
 from app import app
 from app.forms import DevForm
@@ -33,6 +33,7 @@ def index():
                          }
 
         ctrl.handle_email(dev)
+        return redirect('/thanks')
 
     return render_template('index.html',
                            title='HOME',
@@ -40,5 +41,5 @@ def index():
                            )
 
 @app.route("/thanks")
-def thanks(dev):
-    return render_template('thanks.html', position = dev.positions)
+def thanks():
+    return render_template('thanks.html', title='THANKS')

@@ -23,6 +23,10 @@ def is_mobile(ios, android):
         return False
 
 def handle_email(developer):
+    is_generic = True
     for k,v in developer.positions.items():
         if v:
+            is_generic = False
             send_email(developer.email, k)
+    if is_generic:
+        send_email(developer.email, '')
