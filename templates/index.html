@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>Preencha os campos abaixo para se registrar no nosso banco de talentos</h3>
+    <form action="{{ url_for('index') }}" method="POST">
+
+        <p>Qual o seu nome? </p>
+        {{ form.name(size=25, placeholder="AwesomeDev") }} <br>
+
+        <p>Insira seu email </p>
+        {{ form.email(size=25, placeholder="awesomedev@email.com") }}
+        <br>
+        {% for error in form.email.errors %}
+            <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>HTML</p>
+        {{ form.skill_html(min=1,max=10, step=1) }}
+        <p>CSS</p>
+        {{ form.skill_css(min=1,max=10, step=1) }}
+        <p>Javascript</p>
+        {{ form.skill_js(min=1, max=10, step=1) }}
+        <p>Python</p>
+        {{ form.skill_python(min=1,max=10, step=1) }}
+        <p>Django</p>
+        {{ form.skill_django(min=1,max=10, step=1) }}
+        <p>IOS</p>
+        {{ form.skill_ios(min=1,max=10, step=1) }}
+        <p>Android</p>
+        {{ form.skill_android(min=1,max=10,step=1) }}
+        <p><input type="submit" class="btn-register btn-block" value="Registre-se"></p>
+    </form>
+{% endblock %}

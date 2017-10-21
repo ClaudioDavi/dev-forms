@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link href="../static/css/register.css" rel="stylesheet">
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Bem vindo ao nosso cadastro de talentos</title>
+        {% endif %}
+    </head>
+    <hr>
+        <div><h1>TEM QUE MELHORAR MEU HTML E CSS PQP</h1></div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }} </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        {% block content %} {% endblock %}
+    <footer class="footer">
+        <p>&copy; Claudio Souza, 2017</p>
+    </footer>
+    </body>
+</html>
