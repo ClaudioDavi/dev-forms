@@ -3,13 +3,13 @@
     <h5 align="center">Preencha os campos abaixo para se registrar no nosso banco de talentos</h5>
     <div class="container-fluid">
     <form action="{{ url_for('index') }}" method="POST">
-
+        {{ form.hidden_tag() }}
         <div class="form-control">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-control">
                     <label class="col-md-2">Nome </label>
-                    {{ form.name(size=25, placeholder="AwesomeDev") }}
+                    {{ form.name(size=25, placeholder="AwesomeDev", required='required') }}
                     {% for error in form.name.errors %}
                         <div class="viewerror clearfix hidden">
                                 <div class="alert alert-danger">{{ error }}</div>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-control">
                         <label class="col-md-2">Email </label>
-                        {{ form.email(size=25, placeholder="awesomedev@email.com") }}
+                        {{ form.email(size=25, placeholder="awesomedev@email.com", required='required') }}
                         {% for error in form.email.errors %}
                             <div class="viewerror clearfix hidden">
                                     <div class="alert alert-danger">{{ error }}</div>
