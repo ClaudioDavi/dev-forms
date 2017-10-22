@@ -1,31 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
-    <h3>Preencha os campos abaixo para se registrar no nosso banco de talentos</h3>
+    <h5 align="center">Preencha os campos abaixo para se registrar no nosso banco de talentos</h5>
+    <div class="container-fluid">
     <form action="{{ url_for('index') }}" method="POST">
 
-        <p>Qual o seu nome? </p>
-        {{ form.name(size=25, placeholder="AwesomeDev") }} <br>
-
-        <p>Insira seu email </p>
-        {{ form.email(size=25, placeholder="awesomedev@email.com") }}
-        <br>
-        {% for error in form.email.errors %}
-            <span style="color:red;">[{{ error }}]</span>
-        {% endfor %}
-        <p>HTML</p>
-        {{ form.skill_html(min=1,max=10, step=1) }}
-        <p>CSS</p>
-        {{ form.skill_css(min=1,max=10, step=1) }}
-        <p>Javascript</p>
-        {{ form.skill_js(min=1, max=10, step=1) }}
-        <p>Python</p>
-        {{ form.skill_python(min=1,max=10, step=1) }}
-        <p>Django</p>
-        {{ form.skill_django(min=1,max=10, step=1) }}
-        <p>IOS</p>
-        {{ form.skill_ios(min=1,max=10, step=1) }}
-        <p>Android</p>
-        {{ form.skill_android(min=1,max=10,step=1) }}
-        <p><input type="submit" class="btn-register btn-block" value="Registre-se"></p>
+        <div class="form-control">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-control">
+                    <label class="col-md-2">Nome </label>
+                    {{ form.name(size=25, placeholder="AwesomeDev") }}
+                    {% for error in form.name.errors %}
+                        <div class="viewerror clearfix hidden">
+                                <div class="alert alert-danger">{{ error }}</div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <div class="form-control">
+                        <label class="col-md-2">Email </label>
+                        {{ form.email(size=25, placeholder="awesomedev@email.com") }}
+                        {% for error in form.email.errors %}
+                            <div class="viewerror clearfix hidden">
+                                    <div class="alert alert-danger">{{ error }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <p><input type="submit" class=" btn btn-default btn-block" value="Registre-se"></p>
+                </div>
+                <div class="col-md-6">
+                        <p>Avalie suas habilidades com as seguintes tecnologias</p>
+                        <div class="form-control">
+                            <label class="col-md-4">Html</label>
+                            {{ form.skill_html(min=1,max=10, step=1, value=0) }}
+                        </div>
+                        <div class="form-control">
+                            <label class="col-md-4">CSS</label>
+                            {{ form.skill_css(min=1,max=10, step=1, value=0) }}
+                        </div>
+                        <div class="form-control">
+                            <label class="col-md-4">Javascript</label>
+                            {{ form.skill_js(min=1, max=10, step=1, value=0) }}
+                        </div>
+                        <div class="form-control"> 
+                            <label class="col-md-4">Python</label>
+                            {{ form.skill_python(min=1,max=10, step=1, value=0) }}
+                        </div>
+                        <div class="form-control">
+                            <label class="col-md-4">Django</label>
+                            {{ form.skill_django(min=1,max=10, step=1, value=0) }}
+                        </div>
+                        <div class="form-control">
+                            <label class="col-md-4">Des. iOS</label>
+                            {{ form.skill_ios(min=1,max=10, step=1, value=0) }}
+                        </div>
+                        <div class="form-control">
+                        <label class="col-md-4">Des. Android</label>
+                        {{ form.skill_android(min=1,max=10,step=1, value=0) }}
+                        </div>
+                </div>
+            </div>
+        </div>
+       
     </form>
+</div>
 {% endblock %}
