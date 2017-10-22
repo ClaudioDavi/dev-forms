@@ -10,7 +10,7 @@ def index():
 
     form = DevForm()
 
-    if request.method == 'POST' and form.is_submitted() and form.validate_on_submit():
+    if request.method == 'POST' and form.is_submitted():
 
         ctrl.handle_form(form)
 
