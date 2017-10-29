@@ -8,26 +8,18 @@
         <title>Início</title>
         {% endif %}
     </head>
-    <hr>
+    <hr/>
         <div class="container">
             <div class="jumbotron">
                 <h1 align="center">Cadastro de Talentos - Joinville</h1>
             </div>
-            <hr>
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li>{{ message }} </li>
-                {% endfor %}
-                </ul>
-              {% endif %}
-            {% endwith %}
+            <hr/>
             {% block content %} {% endblock %}
         </div>
     <footer class="footer">
-        <p>&copy; Claudio Souza, 2017</p>
+        <div>
+            <p>&copy; Claudio Souza, 2017</p>
+        </div>
     </footer>
     <script src="..static/js/bootstrap.min.js" type="text/javascript"></script>
-    </body>
 </html>

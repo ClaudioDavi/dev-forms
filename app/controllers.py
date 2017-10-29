@@ -6,14 +6,14 @@ def create_user(user_name, user_email):
 
 def handle_form(form):
     dev = create_user(form.name.data, form.email.data)
-    front = is_front(form.skill_html.data,
+    front = is_allowed(form.skill_html.data,
                 form.skill_css.data,
                 form.skill_js.data
                 )
-    back = is_back(form.skill_python.data,
+    back = is_allowed(form.skill_python.data,
                 form.skill_django.data
                 )
-    mobile = is_mobile(form.skill_ios.data,
+    mobile = is_allowed(form.skill_ios.data,
                 form.skill_android.data
                 )
     dev.positions = {'Front End': front,
@@ -22,29 +22,18 @@ def handle_form(form):
                      }
     handle_email(dev)
 
-def is_front(html,css,js):
-    if html >= 7 and js >=7 and css >= 7:
-        return True
-    else:
-        return False
 
-def is_back(python, django):
-    if python >= 7 and django >= 7:
-        return True
-    else:
-        return False
-
-def is_mobile(ios, android):
-    if ios >= 7 and android >= 7:
-        return True
-    else:
-        return False
+def is_allowed(*args):
+    for arg in args:
+        if arg < 7:
+            return False
+    return True
 
 def handle_email(developer):
     is_generic = True
-    for k,v in developer.positions.items():
-        if v:
+    for position, value in developer.positions.items():
+        if value:
             is_generic = False
-            send_email(developer.email, k)
+            send_email(developer.email, position)
     if is_generic:
         send_email(developer.email, '')

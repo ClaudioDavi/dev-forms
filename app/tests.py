@@ -15,32 +15,14 @@ class TestController(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_should_return_front(self):
-        self.assertTrue(ctrl.is_front(7, 7, 7))
-        self.assertTrue(ctrl.is_front(8, 9, 10))
+    def test_is_allowed(self):
+        self.assertTrue(ctrl.is_allowed(7,8,9))
+        self.assertTrue(ctrl.is_allowed(9,10,7))
 
-    def test_should_not_return_front(self):
-        self.assertFalse(ctrl.is_front(6, 9, 9))
-        self.assertFalse(ctrl.is_front(0, 2, 3))
-
-    def test_should_return_back(self):
-        self.assertTrue(ctrl.is_back(7, 7))
-        self.assertTrue(ctrl.is_back(10, 10))
-
-    def test_should_not_return_back(self):
-        self.assertFalse(ctrl.is_back(5, 7))
-        self.assertFalse(ctrl.is_back(9, 4))
-        self.assertFalse(ctrl.is_back(2, 2))
-
-    def test_should_return_mobile(self):
-        self.assertTrue(ctrl.is_mobile(10, 7))
-        self.assertTrue(ctrl.is_mobile(7, 7))
-
-    def test_should_not_return_mobile(self):
-        self.assertFalse(ctrl.is_mobile(6, 10))
-        self.assertFalse(ctrl.is_mobile(10, 5))
-
-
+    def test_is_not_allowed(self):
+        self.assertFalse(ctrl.is_allowed(9, 10, 6))
+        self.assertFalse(ctrl.is_allowed(0, 4, 8))
+        self.assertFalse(ctrl.is_allowed(9, -2, 4))
 
 if __name__ == "__main__":
     unittest.main()

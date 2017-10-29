@@ -2,7 +2,7 @@ from flask import render_template, request, redirect
 
 from app import app
 from app.forms import DevForm
-import app.controllers as ctrl
+import app.controllers as form_controller
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -12,7 +12,7 @@ def index():
 
     if request.method == 'POST' and form.is_submitted() and form.validate_on_submit():
 
-        ctrl.handle_form(form)
+        form_controller.handle_form(form)
 
         return redirect('/thanks')
 
